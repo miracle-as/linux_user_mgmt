@@ -1,5 +1,5 @@
-serviceuser ALL = NOPASSWD: /usr/sbin/useradd
-serviceuser ALL = NOPASSWD: /usr/sbin/usermod
-serviceuser ALL = NOPASSWD: /usr/sbin/userdel
-serviceuser ALL = NOPASSWD: /usr/sbin/groupmod
-serviceuser ALL = NOPASSWD: /usr/sbin/groupdel
+sftp-user-mgmt ALL = NOPASSWD: /usr/sbin/useradd
+sftp-user-mgmt ALL = NOPASSWD: /usr/sbin/usermod
+sftp-user-mgmt ALL = NOPASSWD: /usr/sbin/userdel
+sftp-user-mgmt ALL = NOPASSWD: /usr/sbin/groupmod
+sftp-user-mgmt ALL = NOPASSWD: /usr/sbin/groupdel
