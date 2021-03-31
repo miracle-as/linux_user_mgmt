@@ -1,0 +1,5 @@
+serviceuser ALL = NOPASSWD: /usr/sbin/useradd
+serviceuser ALL = NOPASSWD: /usr/sbin/usermod
+serviceuser ALL = NOPASSWD: /usr/sbin/userdel
+serviceuser ALL = NOPASSWD: /usr/sbin/groupmod
+serviceuser ALL = NOPASSWD: /usr/sbin/groupdel

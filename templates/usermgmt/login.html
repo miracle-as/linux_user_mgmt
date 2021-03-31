@@ -2,7 +2,7 @@
 {% block title %}Login {% endblock %}
 {% block body_block %}
 
-	<form id="login_form" method="post" action="usermgmt/login/">
+	<form id="login_form" method="post" action="login">
 	<h3 style="font-weight: bold; margin-left:320px">Please sign in</h3>
 	{% csrf_token %}
 	{% if bad_details %}

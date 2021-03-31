@@ -11,8 +11,6 @@ import sys
 import grp
 # Create your views here.
 
-sys_sudo_pwd = 'halesh'
-
 def home(request):
     """ """
     return render(request, 'usermgmt/home.html')
@@ -146,6 +144,7 @@ def grantusersucc(request):
 
     return render(request, 'usermgmt/usergrantsucc.html', {'username': username})
 
+@login_required
 def register(request):
 
     # A boolean value for telling the template whether the registration was successful.
@@ -232,5 +231,5 @@ def user_logout(request):
     logout(request)
 
     #Take the user back to the homepage
-    return HttpResponseRedirect('/home')
+    return HttpResponseRedirect('/')
 
