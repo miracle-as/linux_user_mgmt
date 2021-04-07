@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from usermgmt.forms import Adduser, Usermod, Userdel, UserGrantAccess, UserForm, UserProfileForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 import  pwd
 import crypt
 import os
@@ -145,6 +145,7 @@ def grantusersucc(request):
     return render(request, 'usermgmt/usergrantsucc.html', {'username': username})
 
 @login_required
+@user_passes_test(lambda u: u.is_superuser)
 def register(request):
 
     # A boolean value for telling the template whether the registration was successful.

@@ -155,7 +155,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
-REGISTRATION_OPEN = True # If true user can register
+REGISTRATION_OPEN = False # If true user can register
 ACCOUNT_ACTIVATION_DAYS = 7 # One week activation windows
 REGISTRATION_AUTO_LOGIN = True # If True the user will be automatically logged in
 LOGIN_URL='login'
