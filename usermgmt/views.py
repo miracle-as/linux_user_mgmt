@@ -29,7 +29,7 @@ def addsuccess(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        shelltype = request.POST.get('shelltype')
+        expirydate = request.POST.get('expirydate')
         userexist = None
         for user in pwd.getpwall():
             if user[0] == username:
@@ -37,7 +37,7 @@ def addsuccess(request):
                 break
         password = password
         encpass = crypt.crypt(password, '22')
-        usercheck = os.system("sudo useradd "+username+" -p "+encpass+" -m -s /bin/bash")
+        usercheck = os.system("sudo useradd "+username+" -p "+encpass+" -m -s /bin/bash -e "+expirydate)
         if userexist == username:
            print("User already exist: %s" %username)
         else:
