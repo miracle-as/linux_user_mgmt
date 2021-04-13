@@ -145,7 +145,7 @@ def grantusersucc(request):
     return render(request, 'usermgmt/usergrantsucc.html', {'username': username})
 
 @login_required
-@user_passes_test(lambda u: u.is_superuser)
+#@user_passes_test(lambda u: u.is_superuser)
 def register(request):
 
     # A boolean value for telling the template whether the registration was successful.
