@@ -2,13 +2,13 @@
 {% block title %}User create Success {% endblock %}
 {% block body_block %}
 <br/>
-{% if oldusername == None %}
+{% if username == None %}
 <h1>The username provided is not exist in the server</h1>
-<p>User name doesn't exist in the server : {{ oldusername }}</br>
-   Please try to modify username with exist in the server.</br>
+<p>User name doesn't exist in the server : {{ username }}</br>
+   Please make sure the user exist in the server.</br>
 {% else %}
 <h1>Here is Modifed user status:</h1></br>
-Old username : {{ oldusername }}</br>
-New Username : {{ new_username }}</p>
+Username : {{ username }}</br>
+New expirydate : {{ new_expirydate }}</p>
 {% endif %}
 {% endblock%}

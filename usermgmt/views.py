@@ -24,6 +24,11 @@ def index(request):
 
 
 @login_required
+def usershow(request):
+    """ """
+    return render(request, 'usermgmt/usershow.html', {'userexist': userexist})
+
+@login_required
 def addsuccess(request):
     """ """
     if request.method == 'POST':
@@ -64,21 +69,11 @@ def usermod(request):
 def modifyuser(request):
     """ """
     if request.method == 'POST':
-        old_username = request.POST.get('old_username')
-        new_username = request.POST.get('new_username')
-        for user in pwd.getpwall():
-            if user[0] == old_username:
-                oldusername = old_username
-                break
-        user_modify= os.system("sudo usermod -l "+new_username+" "+old_username+"")
-        group_modify= os.system("sudo groupmod -n "+new_username+" "+old_username+"")
-        if user[0] == old_username:
-            oldusername = old_username
-            new_username = new_username
-        else:
-            oldusername = None
+        username = request.POST.get('username')
+        new_expirydate = request.POST.get('new_expirydate')
+        os.system("sudo chage -E "+new_expirydate+" "+username)
 
-    return render(request, 'usermgmt/usermodsucc.html', {'new_username': new_username, 'oldusername': oldusername})
+    return render(request, 'usermgmt/usermodsucc.html', {'username': username, 'new_expirydate': new_expirydate})
 
 
 @login_required

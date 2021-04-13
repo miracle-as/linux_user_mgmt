@@ -12,8 +12,8 @@ class Adduser(forms.Form):
 
 class Usermod(forms.Form):
     """ """
-    old_username = forms.CharField(max_length=128)
-    new_username = forms.CharField(max_length=128)
+    username = forms.CharField(max_length=128)
+    new_expirydate = forms.DateField(initial=datetime.date.today)
 
 class Userdel(forms.Form):
     """ """
