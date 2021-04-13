@@ -37,7 +37,7 @@ def addsuccess(request):
                 break
         password = password
         encpass = crypt.crypt(password, '22')
-        usercheck = os.system("sudo useradd "+username+" -p "+encpass+" -m -s /bin/bash -e "+expirydate+" -G internal-sftp")
+        usercheck = os.system("sudo useradd "+username+" -p "+encpass+" -m -s /bin/bash -e "+expirydate+" -G sftpusers")
 
         if userexist == username:
            print("User already exist: %s" %username)
