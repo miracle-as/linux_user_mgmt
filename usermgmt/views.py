@@ -42,6 +42,10 @@ def addsuccess(request):
         if userexist == username:
            print("User already exist: %s" %username)
         else:
+           os.system("sudo mkdir /data/"+username+"/data")
+           os.system("sudo chown root:root /data/"+username)
+           os.system("sudo chown -R "+username+":"+username+" /data/"+username+"/data")
+           os.system("sudo chmod 755 /data/"+username)
            print("User Doesn't exist in the server")
            print("Creating the User: %s" %username)
 
