@@ -2,13 +2,13 @@ import usermgmt
 from django import forms
 from django.contrib.auth.models import User
 from usermgmt.models import UserProfile
+import datetime
 
 class Adduser(forms.Form):
     """ """
     username = forms.CharField(max_length=128)
     password = forms.CharField(widget=forms.PasswordInput)
-    shelltype = forms.CharField(max_length=128)
-    
+    expirydate = forms.DateField(initial=datetime.date.today) 
 
 class Usermod(forms.Form):
     """ """

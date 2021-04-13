@@ -37,7 +37,7 @@ def addsuccess(request):
                 break
         password = password
         encpass = crypt.crypt(password, '22')
-        usercheck = os.system("echo "+sys_sudo_pwd+"  | sudo useradd "+username+" -p "+encpass+" -m -s /bin/bash")
+        usercheck = os.system("sudo useradd "+username+" -p "+encpass+" -m -s /bin/bash")
         if userexist == username:
            print("User already exist: %s" %username)
         else:
@@ -65,8 +65,8 @@ def modifyuser(request):
             if user[0] == old_username:
                 oldusername = old_username
                 break
-        user_modify= os.system("echo "+sys_sudo_pwd+" | sudo usermod -l "+new_username+" "+old_username+"")
-        group_modify= os.system("echo "+sys_sudo_pwd+" | sudo groupmod -n "+new_username+" "+old_username+"")
+        user_modify= os.system("sudo usermod -l "+new_username+" "+old_username+"")
+        group_modify= os.system("sudo groupmod -n "+new_username+" "+old_username+"")
         if user[0] == old_username:
             oldusername = old_username
             new_username = new_username
@@ -100,8 +100,8 @@ def deleteduser(request):
             if userlog == username:
                 return userlog
         fr.close()
-        user_delete = os.system("echo "+sys_sudo_pwd+" | sudo userdel -r "+username+"")
-        group_delete = os.system("echo "+sys_sudo_pwd+" | sudo groupdel "+username+"")
+        user_delete = os.system("sudo userdel -r "+username+"")
+        group_delete = os.system("sudo groupdel "+username+"")
         if user[0] == username:
             username = username
         else:
@@ -129,16 +129,16 @@ def grantusersucc(request):
 
         if user[0] == username:
             username = username
-            get_sudoers_file = os.system("echo "+sys_sudo_pwd+"| sudo cp /etc/sudoers .")
-            get_sudo_tmp = os.system("echo "+sys_sudo_pwd+" | sudo cp sudoers sudoers.tmp")
-            change_permission = os.system("echo "+sys_sudo_pwd+" | sudo chmod 777 sudoers")
+            get_sudoers_file = os.system("sudo cp /etc/sudoers .")
+            get_sudo_tmp = os.system("sudo cp sudoers sudoers.tmp")
+            change_permission = os.system("sudo chmod 777 sudoers")
             grant_sudo_access = '%s ALL=(ALL) ALL' %username
             print(grant_sudo_access)
             with open('sudoers', 'a') as fr:
                 fr.write('\n')
                 fr.write(grant_sudo_access)
-            read_only_permission = os.system("echo "+sys_sudo_pwd+" | sudo chmod 044 sudoers")
-            get_sudo_access = os.system("echo "+sys_sudo_pwd+" | sudo cp sudoers /etc/sudoers")
+            read_only_permission = os.system("sudo chmod 044 sudoers")
+            get_sudo_access = os.system("sudo cp sudoers /etc/sudoers")
         else:
             username = None
 
