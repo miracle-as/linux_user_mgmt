@@ -4,5 +4,7 @@ sftp-user-mgmt ALL = NOPASSWD: /usr/sbin/userdel
 sftp-user-mgmt ALL = NOPASSWD: /usr/sbin/groupmod
 sftp-user-mgmt ALL = NOPASSWD: /usr/sbin/groupdel
 sftp-user-mgmt ALL = NOPASSWD: /bin/chown
+sftp-user-mgmt ALL = NOPASSWD: /bin/chmod
 sftp-user-mgmt ALL = NOPASSWD: /bin/mkdir
+
 
