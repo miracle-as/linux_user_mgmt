@@ -7,7 +7,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
 
     #The additional attributes we wish to include
-    email = models.EmailField(blank=True)
+    website = models.URLField(blank=True)
 
     #Override the __unicode__() method to return out something meaningful!
     def __unicode__(self):
