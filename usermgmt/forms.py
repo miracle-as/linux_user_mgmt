@@ -7,6 +7,7 @@ import datetime
 class Adduser(forms.Form):
     """ """
     username = forms.CharField(max_length=128)
+    email = forms.CharField(max_length=128)
     password = forms.CharField(widget=forms.PasswordInput)
     expirydate = forms.DateField(initial=datetime.date.today) 
 
