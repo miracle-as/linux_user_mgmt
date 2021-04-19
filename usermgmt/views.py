@@ -10,6 +10,7 @@ import os
 import sys
 import grp
 import smtplib
+from smtplib import SMTPException
 # Create your views here.
 
 def home(request):
