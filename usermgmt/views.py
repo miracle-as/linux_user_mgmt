@@ -9,6 +9,7 @@ import crypt
 import os
 import sys
 import grp
+import smtplib
 # Create your views here.
 
 def home(request):
@@ -34,6 +35,7 @@ def addsuccess(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        email = request.POST.get('email')
         expirydate = request.POST.get('expirydate')
         userexist = None
         for user in pwd.getpwall():
@@ -53,7 +55,39 @@ def addsuccess(request):
            os.system("sudo chmod 755 /data/"+username)
            print("User Doesn't exist in the server")
            print("Creating the User: %s" %username)
+           print("Sending initial email to $s" %email)
+           sender = 'admin@ftp.globalconnect.dk'
+           receivers = [ email ]
 
+           message = """From: SFTP Admin <admin@ftp.globalconnect.dk>
+           To: To Person <"""+email+""">
+           Subject: SMTP e-mail test
+           
+           Dear Customer
+
+           Your account are ready for use. To access our secure ftp service, you can use WinSCP.
+
+           Address: ftp.globalconnect.dk
+           Your username is: """+username+"""
+
+           Your password will be delivered from our technician.
+
+           GlobalConnect
+
+           Service Desk 
+           """
+
+           smtpObj = smtplib.SMTP('mailrelay.globalconnect.dk',25)
+           smtpObj.sendmail(sender, receivers, message)
+           smtpObj.quit()
+
+try:
+   smtpObj = smtplib.SMTP('localhost')
+   smtpObj.sendmail(sender, receivers, message)         
+   print "Successfully sent email"
+except SMTPException:
+   print "Error: unable to send email"
+           
 
     return render(request, 'usermgmt/addsuccess.html', {'userexist': userexist, 'username': username})
 
