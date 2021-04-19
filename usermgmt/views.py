@@ -55,7 +55,7 @@ def addsuccess(request):
            os.system("sudo chmod 755 /data/"+username)
            print("User Doesn't exist in the server")
            print("Creating the User: %s" %username)
-           print("Sending initial email to $s" %email)
+           print("Sending initial email to "+email)
            sender = 'admin@ftp.globalconnect.dk'
            receivers = [ email ]
 
