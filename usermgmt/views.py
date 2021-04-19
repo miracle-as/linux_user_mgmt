@@ -10,7 +10,6 @@ import os
 import sys
 import grp
 import smtplib
-from smtplib import SMTPException
 # Create your views here.
 
 def home(request):
@@ -82,7 +81,7 @@ def addsuccess(request):
               smtpObj.sendmail(sender, receivers, message)
               smtpObj.quit()
               print("Successfully sent email")
-           except SMTPException:
+           except smtplib.SMTPException:
               print("Error: unable to send email")
            
 
