@@ -80,9 +80,9 @@ def addsuccess(request):
               smtpObj = smtplib.SMTP('mailrelay.globalconnect.dk',25)
               smtpObj.sendmail(sender, receivers, message)
               smtpObj.quit()
-              print "Successfully sent email"
+              print("Successfully sent email")
            except SMTPException:
-              print "Error: unable to send email"
+              print("Error: unable to send email")
            
 
     return render(request, 'usermgmt/addsuccess.html', {'userexist': userexist, 'username': username})
