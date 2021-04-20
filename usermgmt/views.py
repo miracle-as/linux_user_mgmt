@@ -77,7 +77,7 @@ def addsuccess(request):
            Service Desk 
            """
            try:
-              smtpObj = smtplib.SMTP('mailrelay.globalconnect.dk',25)
+              smtpObj = smtplib.SMTP('localhost',25)
               smtpObj.sendmail(sender, receivers, message)
               smtpObj.quit()
               print("Successfully sent email")
