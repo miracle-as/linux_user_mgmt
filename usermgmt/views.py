@@ -132,6 +132,7 @@ def deleteduser(request):
         fr.close()
         user_delete = os.system("sudo userdel -r "+username+"")
         group_delete = os.system("sudo groupdel "+username+"")
+        data_delete = os.system("sudo rm -rf /data/"+username)
         if user[0] == username:
             username = username
         else:
