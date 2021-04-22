@@ -56,10 +56,10 @@ def addsuccess(request):
            print("User Doesn't exist in the server")
            print("Creating the User: %s" %username)
            print("Sending initial email to "+email)
-           sender = 'admin@ftp.globalconnect.dk'
+           sender = 'sftpadmin@globalconnect.dk'
            receivers = [ email ]
 
-           message = """From: SFTP Admin <admin@ftp.globalconnect.dk>
+           message = """From: SFTP Admin <sftpadmin@globalconnect.dk>
            To: To Person <"""+email+""">
            Subject: SMTP e-mail test
            
