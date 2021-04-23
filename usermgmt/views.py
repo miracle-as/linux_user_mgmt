@@ -61,7 +61,7 @@ def addsuccess(request):
 
            message = """From: SFTP Admin <sftpadmin@globalconnect.dk>
            To: To Person <"""+email+""">
-           Subject: SMTP e-mail test
+           Subject: SFTP User Created
            
            Dear Customer
 
@@ -84,6 +84,33 @@ def addsuccess(request):
            except smtplib.SMTPException:
               print("Error: unable to send email")
            
+
+           loggedinuseremail = request.user.email
+
+           print("Sending password to: "+loggedinuseremail)
+           
+           receivers = [ loggedinuseremail ]
+
+           message = """From: SFTP Admin <sftpadmin@globalconnect.dk>
+           To: To Person <"""+loggedinuseremail+""">
+           Subject: SFTP User Created
+
+           The user: """+username+""" was created for access to sftp.globalconnect.dk
+
+           His password is: '"""+password+"""', please deliver this to him in a secure fashion.
+
+
+           SFTP Service
+           """
+
+           try:
+              smtpObj = smtplib.SMTP('localhost',25)
+              smtpObj.sendmail(sender, receivers, message)
+              smtpObj.quit()
+              print("Successfully sent email")
+           except smtplib.SMTPException:
+              print("Error: unable to send email")
+
 
     return render(request, 'usermgmt/addsuccess.html', {'userexist': userexist, 'username': username})
 
